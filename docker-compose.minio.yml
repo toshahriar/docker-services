@@ -1,0 +1,20 @@
+services:
+
+  minio:
+    image: minio/minio:${MINIO_IMAGE_TAG}
+    container_name: ds_minio
+    env_file:
+      - minio/.env
+    command: server /data --console-address ":9001"
+    volumes:
+      - ds_minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      ds_net:
+        aliases:
+          - ds_minio
+
+volumes:
+  ds_minio_data:

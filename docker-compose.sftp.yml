@@ -1,0 +1,33 @@
+services:
+
+  sftp:
+    image: atmoz/sftp:${SFTP_IMAGE_TAG}
+    container_name: ds_sftp
+    env_file:
+      - sftp/.env
+    volumes:
+      - ds_sftp_data:/home
+    ports:
+      - "1022:22"
+    networks:
+      ds_net:
+        aliases:
+          - ds_sftp
+
+  sftp_ui:
+    image: filebrowser/filebrowser:${SFTP_UI_IMAGE_TAG}
+    container_name: ds_sftp_ui
+    volumes:
+      - ds_sftp_data:/home
+      - ds_sftp_config:/config
+      - ./sftp/config.json:/config/config.json
+    ports:
+      - "8022:80"
+    networks:
+      ds_net:
+        aliases:
+          - ds_sftp_ui
+
+volumes:
+  ds_sftp_data:
+  ds_sftp_config:

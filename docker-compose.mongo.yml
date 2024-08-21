@@ -1,0 +1,18 @@
+services:
+
+  mongo:
+    image: mongo:${MONGO_IMAGE_TAG}
+    container_name: ds_mongo
+    env_file:
+      - mongo/.env
+    volumes:
+      - ds_mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      ds_net:
+        aliases:
+          - ds_mongo
+
+volumes:
+  ds_mongo_data:

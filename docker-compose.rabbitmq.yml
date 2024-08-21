@@ -1,0 +1,19 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: ds_rabbitmq
+    env_file:
+      - rabbitmq/.env
+    volumes:
+      - ds_rabbitmq_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      ds_net:
+        aliases:
+          - ds_rabbitmq
+
+volumes:
+  ds_rabbitmq_data:

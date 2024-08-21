@@ -1,0 +1,18 @@
+services:
+
+  postgres:
+    image: postgres:${POSTGRES_IMAGE_TAG}
+    container_name: ds_postgres
+    env_file:
+      - postgres/.env
+    volumes:
+      - ds_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      ds_net:
+        aliases:
+          - ds_postgres
+
+volumes:
+  ds_postgres_data:

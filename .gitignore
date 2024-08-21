@@ -1,0 +1,10 @@
+.idea
+.code
+.env
+minio/.env
+mongo/.env
+mysql/.env
+postgres/.env
+redis/.env
+sftp/.env
+sftp/config.json

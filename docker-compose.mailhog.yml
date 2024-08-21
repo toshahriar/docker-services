@@ -1,0 +1,12 @@
+services:
+
+  mailhog:
+    image: mailhog/mailhog:${MAILHOG_IMAGE_TAG}
+    container_name: ds_mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      ds_net:
+        aliases:
+          - ds_mailhog

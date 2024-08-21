@@ -1,0 +1,20 @@
+services:
+
+  redis:
+    image: redis:${REDIS_IMAGE_TAG}
+    container_name: ds_redis
+    env_file:
+      - redis/.env
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ds_redis_data:/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      ds_net:
+        aliases:
+          - ds_redis
+
+volumes:
+  ds_redis_data:

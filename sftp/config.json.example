@@ -1,0 +1,37 @@
+{
+  "port": 80,
+  "baseURL": "",
+  "address": "",
+  "log": "stdout",
+  "database": "/config/filebrowser.db",
+  "root": "/srv",
+  "auth": {
+    "method": "json",
+    "header": "X-Auth",
+    "signing_key": "ZPQtx8HEOAgORj0"
+  },
+  "users": [
+    {
+      "username": "root",
+      "password": "$2a$12$fKdCNSUO.tK6QbkX4F3mKOa9KIWf2pLOo92mAyWsr6TOsSZ2FG2UG",
+      "scope": "/srv",
+      "locale": "en",
+      "viewMode": "mosaic",
+      "singleClick": false,
+      "permissions": {
+        "admin": true,
+        "execute": true,
+        "create": true,
+        "rename": true,
+        "modify": true,
+        "delete": true,
+        "share": true,
+        "download": true
+      }
+    }
+  ],
+  "branding": {
+    "name": "SFTP UI",
+    "disableExternal": false
+  }
+}

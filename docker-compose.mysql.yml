@@ -1,0 +1,18 @@
+services:
+
+  mysql:
+    image: mysql:${MYSQL_IMAGE_TAG}
+    container_name: ds_mysql
+    env_file:
+      - mysql/.env
+    volumes:
+      - ds_mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      ds_net:
+        aliases:
+          - ds_mysql
+
+volumes:
+  ds_mysql_data:

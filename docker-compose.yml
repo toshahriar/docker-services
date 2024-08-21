@@ -1,0 +1,3 @@
+networks:
+  ds_net:
+    driver: bridge
